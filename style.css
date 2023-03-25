@@ -1,0 +1,197 @@
+    #background {
+        background-image: url('road.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed; 
+        background-size: 100% 100%;
+    }
+
+    #toptitle {
+        font-family: "Times New Roman", Times, serif;
+    }
+    
+    /*botton*/
+    .btn {
+        background-color: #b7ddc5;
+        border-radius: 100px;
+        box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+        color: #105d10;
+        cursor: pointer;
+        display: inline-block;
+        font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+        padding: 2px 10px;
+        text-align: center;
+        text-decoration: none;
+        transition: all 250ms;
+        border: 0;
+        font-size: 15px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+    }
+      
+    .btn:hover {
+        box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+        transform: scale(1.05) rotate(-1deg);
+    }
+
+    #changeLang {
+        position: relative;
+        text-align: left;
+    }
+    
+    #seachBar {
+        position: relative;
+        text-align: right;
+    }
+
+    /*banner*/
+    .demo-wrap {
+        overflow: hidden;
+        position: relative;
+    }
+      
+    .demo-bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+    }
+      
+    #toptitle {
+        position: relative;
+        font-size: 150%;
+        text-align: center;
+        color: #fff;
+    }
+
+
+    /*Table*/
+    table {
+        width: 100%;
+        border: 0px; 
+    }
+
+    table th {
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    table th, td {
+        background-color: rgba(255,255,255,0.2);
+        color: #fff;
+    }
+
+    table caption {
+        font-size: 1.5em;
+    }
+
+    /* Hide table header. */ 
+    table thead {
+        display:none ;
+    }
+
+
+    table tr { 
+        margin-bottom: 1em;
+
+	}
+
+    table td {
+        text-align: right; 
+        border-bottom: 0px;
+    }
+
+    table td, table tr {
+        display: block;   
+		border: 1px solid #fff; 
+    }
+
+    
+    table td::before {
+        font-weight: bold;
+        float: left;
+        text-transform: uppercase;
+    }
+
+    /*English version*/
+    #engVer td:nth-of-type(1):before { 
+        content: "Title";
+    }
+    #engVer td:nth-of-type(2):before { 
+        content: "District";
+    }
+    #engVer td:nth-of-type(3):before { 
+        content: "Route";
+    }
+    #engVer td:nth-of-type(4):before { 
+        content: "HowToAccess";
+    }
+    #engVer td:nth-of-type(5):before { 
+        content: "Latitude";
+    }
+    #engVer td:nth-of-type(6):before { 
+        content: "Longitude";
+    }
+
+    /*Chinese version*/
+    #chiVer td:nth-of-type(1):before { 
+        content: "路徑";
+    }
+    #chiVer td:nth-of-type(2):before { 
+        content: "分區";
+    }
+    #chiVer td:nth-of-type(3):before { 
+        content: "路徑資料";
+    }
+    #chiVer td:nth-of-type(4):before { 
+        content: "前往途徑";
+    }
+    #chiVer td:nth-of-type(5):before { 
+        content: "緯度";
+    }
+    #chiVer td:nth-of-type(6):before { 
+        content: "經度";
+	    
+    }
+    #engVerwithdistrict td:nth-of-type(1):before { 
+        content: "Title";
+    }
+    #engVerwithdistrict td:nth-of-type(2):before { 
+        content: "District";
+    }
+    #engVerwithdistrict td:nth-of-type(3):before { 
+        content: "Route";
+    }
+    #engVerwithdistrict td:nth-of-type(4):before { 
+        content: "HowToAcces";
+    }
+    #engVerwithdistrict td:nth-of-type(5):before { 
+        content: "Latitude";
+    }
+    #engVerwithdistrict td:nth-of-type(6):before { 
+        content: "Longitude";
+    }
+    #chiVerwithdistrict td:nth-of-type(1):before { 
+        content: "路徑";
+    }
+    #chiVerwithdistrict td:nth-of-type(2):before { 
+        content: "分區";
+    }
+    #chiVerwithdistrict td:nth-of-type(3):before { 
+        content: "路徑資料";
+    }
+    #chiVerwithdistrict td:nth-of-type(4):before { 
+        content: "前往途徑";
+    }
+    #chiVerwithdistrict td:nth-of-type(5):before { 
+        content: "緯度";
+    }
+    #chiVerwithdistrict td:nth-of-type(6):before { 
+        content: "經度";
+    }
+
+
+
+
+

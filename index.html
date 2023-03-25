@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Fitness Walking Tracks</title>
+
+        <link rel="stylesheet" href="style.css"> 
+    </head>
+
+    <body>
+        <script src="app.js"></script>
+        
+        <div class="demo-wrap">
+            <img
+              class="demo-bg"
+              src="banner.jpeg"
+            >
+
+            <div class="demo-content">
+            
+            <!--two button-->
+                <div id="changeLang">
+                    <input type="button" onclick="showEnglish()" value="English" class="btn">
+                    <input type="button" onclick="showChinese()" value="繁體中文" class="btn">
+                </div>
+
+            <!--search-->
+                <div id="seachBar">
+                    <input type="text" id="engInput" onkeyup="search()" placeholder="Search for Title.." title="Type in a title">
+                    <input type="text" id="chiInput" onkeyup="search()" placeholder="搜索路徑.." title="Type in a title">
+                </div>
+            <!--district search and button-->
+                <div id="DistrictArea">
+                    <select id="Engdistrictselect">
+                        <option value="1">Central and Western</option>
+                        <option value="2">Wan Chai</option>
+                        <option value="3">Eastern</option>
+                        <option value="4">Southern</option>
+                        <option value="5">Sham Shui Po</option>
+                        <option value="6">Yau Tsim Mong</option>
+                        <option value="7">Wong Tai Sin</option>
+                        <option value="8">Tuen Mun</option>
+                        <option value="9">Kwun Tong</option>
+                        <option value="10">Kowloon City</option>
+                        <option value="11">Tai Po</option>
+                        <option value="12">Sai Kung</option>
+                        <option value="13">Sha Tin Distict</option>
+                        <option value="14">Yuen Long</option>
+                        <option value="15">North</option>
+                        <option value="16">Tsuen Wan</option>
+                        <option value="17">Kwai Tsing</option>
+                        <option value="18">Islands</option>
+                     </select>
+                    <input type="button" id="EnglishDistrictfuncButton" onclick="EnglishDistrictfunc()" value="Search for district" class="btn">
+                    <select id="Chidistrictselect">
+                        <option value="19">中西區</option>
+                        <option value="20">灣仔區</option>
+                        <option value="21">東區</option>
+                        <option value="22">南區</option>
+                        <option value="23">深水埗區</option>
+                        <option value="24">油尖旺區</option>
+                        <option value="25">黃大仙區</option>
+                        <option value="26">屯門區</option>
+                        <option value="27">觀塘區</option>
+                        <option value="28">九龍城區</option>
+                        <option value="29">大埔區</option>
+                        <option value="30">西貢區</option>
+                        <option value="31">沙田區</option>
+                        <option value="32">元朗區</option>
+                        <option value="33">北區</option>
+                        <option value="34">荃灣區</option>
+                        <option value="35">葵青區</option>
+                        <option value="36">離島區</option>
+                     </select>
+                    <input type="button" id="ChineseDistrictfuncButton" onclick="ChineseDistrictfunc()" value="搜尋區域" class="btn">
+                </div>        
+            
+                <p id="toptitle">Fitness Walking Tracks</p>
+           
+            </div>
+        </div>
+
+
+        <div id="background">
+        <div id="engVer">
+            <table id = "tb1" border = "1">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>District</th>
+                        <th>Route</th>
+                        <th>HowToAccess</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div id="chiVer">
+            <table id = "tb2" border = "1">
+                <thead>
+                    <tr>
+                        <th>路徑</th>
+                        <th>分區</th>
+                        <th>路徑資料</th>
+                        <th>前往途徑</th>
+                        <th>緯度</th>
+                        <th>經度</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <!--engVerwithdistrict table-->
+        <div id="engVerwithdistrict">
+            <table id = "tb3" border = "1">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>District</th>
+                        <th>Route</th>
+                        <th>HowToAccess</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <!--chiVerwithdistrict table-->
+        <div id="chiVerwithdistrict">
+            <table id = "tb4" border = "1">
+                <thead>
+                    <tr>
+                        <th>路徑</th>
+                        <th>分區</th>
+                        <th>路徑資料</th>
+                        <th>前往途徑</th>
+                        <th>緯度</th>
+                        <th>經度</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        </div>
+
+
+        <script>
+            //Hide Chinese version elements at first
+            document.getElementById("engVer").style.display = "none";
+            document.getElementById("chiVer").style.display = "none";
+            document.getElementById("Chidistrictselect").style.display = "none";
+            document.getElementById("ChineseDistrictfuncButton").style.display = "none";
+
+            fetch("mydata.json")
+                .then(response => response.json())
+                .then(data => {
+                    for (var i = 0; i<data.items.length; i++){
+                        let vTitle_en = data.items[i].Title_en;
+                        let vDistrict_en = data.items[i].District_en;
+                        let vRoute_en = data.items[i].Route_en;
+                        let vHowToAccess_en = data.items[i].HowToAccess_en;
+                        let vMapURL_en = data.items[i].MapURL_en;
+                        let vLatitude = data.items[i].Latitude;
+                        let vLongitude = data.items[i].Longitude;
+                            document.querySelector("#tb1").innerHTML += `
+                                <tbody>
+                                    <tr>
+                                        <td>${vTitle_en}</td>
+                                        <td>${vDistrict_en}</td>
+                                        <td>${vRoute_en}</td>
+                                        <td>${vHowToAccess_en}</td>
+                                        <td>${vLatitude}</td>
+                                        <td>${vLongitude}</td>
+                                    </tr>
+                                <tbody>`;
+                    }
+                })
+
+                fetch("mydata.json")
+                .then(response => response.json())
+                .then(data => {
+                    for (var i = 0; i<data.items.length; i++){
+                        let vTitle_tc = data.items[i].Title_tc;
+                        let vDistrict_tc = data.items[i].District_tc;
+                        let vRoute_tc = data.items[i].Route_tc;
+                        let vHowToAccess_tc = data.items[i].HowToAccess_tc;
+                        let vMapURL_tc = data.items[i].MapURL_tc;
+                        let vLatitude = data.items[i].Latitude;
+                        let vLongitude = data.items[i].Longitude;
+                            document.querySelector("#tb2").innerHTML += `
+                                <tbody>
+                                    <tr>
+                                        <td>${vTitle_tc}</td>
+                                        <td>${vDistrict_tc}</td>
+                                        <td>${vRoute_tc}</td>
+                                        <td>${vHowToAccess_tc}</td>
+                                        <td>${vLatitude}</td>
+                                        <td>${vLongitude}</td>
+                                    </tr>
+                                <tbody>`;
+                    }
+                })
+                
+                
+        </script>
+    </body>
+
+</html>
